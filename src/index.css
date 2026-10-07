@@ -1,0 +1,291 @@
+/**
+ * TTRICONIX PRODUCTION DESIGN SYSTEM & CSS TOKENS
+ * Configurable via CSS custom properties and the theme configuration layer.
+ */
+
+:root {
+  /* Default Obsidian Engineering Theme Tokens */
+  --color-primary-bg: #090a0f;
+  --color-secondary-bg: #0e1117;
+  --color-surface: #12161f;
+  --color-surface-elevated: #181d28;
+  --color-primary-text: #f3f4f6;
+  --color-secondary-text: #9ca3af;
+  --color-muted-text: #6b7280;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-strong-border: rgba(255, 255, 255, 0.16);
+  --color-primary-accent: #38bdf8;
+  --color-primary-accent-muted: rgba(56, 189, 248, 0.12);
+  --color-secondary-accent: #818cf8;
+  --color-accent-glow: rgba(56, 189, 248, 0.22);
+  --color-grid-line: rgba(255, 255, 255, 0.03);
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+
+  /* Typography */
+  --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Geometry */
+  --radius-base: 8px;
+  --radius-card: 14px;
+  --radius-button: 8px;
+
+  /* Layout */
+  --layout-max-width: 1280px;
+  --layout-section-spacing: 120px;
+  --layout-spacing-scale: 1;
+
+  /* Motion & Shadows */
+  --motion-speed: 0.35s;
+  --motion-intensity: normal;
+  --shadow-intensity: 0.4;
+}
+
+/* Base resets & box-sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-primary-bg);
+  color: var(--color-primary-text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background-color var(--motion-speed) ease, color var(--motion-speed) ease;
+}
+
+/* Typography elements */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-primary-text);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+p {
+  color: var(--color-secondary-text);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--motion-speed) ease, opacity var(--motion-speed) ease;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* Global Container */
+.container {
+  width: 100%;
+  max-width: var(--layout-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+/* Section Wrapper */
+.section {
+  padding-top: calc(var(--layout-section-spacing) * var(--layout-spacing-scale));
+  padding-bottom: calc(var(--layout-section-spacing) * var(--layout-spacing-scale));
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+
+/* Section Header Typography */
+.section-header {
+  margin-bottom: 56px;
+  max-width: 760px;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary-accent);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1.12;
+  margin-bottom: 20px;
+  color: var(--color-primary-text);
+}
+
+.section-subtitle {
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  color: var(--color-secondary-text);
+  line-height: 1.6;
+}
+
+/* Card components */
+.card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: 32px;
+  position: relative;
+  transition: all var(--motion-speed) cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover {
+  border-color: var(--color-strong-border);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px -12px rgba(0, 0, 0, calc(var(--shadow-intensity) * 0.8));
+}
+
+.card-elevated {
+  background-color: var(--color-surface-elevated);
+  border: 1px solid var(--color-strong-border);
+  border-radius: var(--radius-card);
+  padding: 32px;
+}
+
+/* Engineering Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 26px;
+  border-radius: var(--radius-button);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  transition: all var(--motion-speed) cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--color-primary-text);
+  color: var(--color-primary-bg);
+  border: 1px solid var(--color-primary-text);
+  font-weight: 700;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--color-accent-glow);
+  opacity: 0.96;
+}
+
+.btn-secondary {
+  background: var(--color-surface);
+  color: var(--color-primary-text);
+  border: 1px solid var(--color-strong-border);
+}
+
+.btn-secondary:hover {
+  background: var(--color-surface-elevated);
+  border-color: var(--color-primary-accent);
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  color: var(--color-secondary-text);
+  padding: 10px 18px;
+}
+
+.btn-ghost:hover {
+  color: var(--color-primary-text);
+  background: var(--color-surface);
+}
+
+/* Subtle Technical Grid Background */
+.bg-tech-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, var(--color-grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-grid-line) 1px, transparent 1px);
+}
+
+/* Badge & Monospace Pills */
+.tech-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--color-primary-accent-muted);
+  color: var(--color-primary-accent);
+  border: 1px solid var(--color-border);
+  letter-spacing: 0.02em;
+}
+
+/* Focus States for Accessibility */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--color-primary-accent);
+  outline-offset: 3px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-primary-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-strong-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-accent);
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
